@@ -1,0 +1,147 @@
+
+### Basic Arithmetic and Functions
+
+1. **`x01 = 1 + 2`**
+   - Simple addition. Result: `3`
+
+2. **`x02 = (+) 1 2`**
+   - The `+` operator is used as a function here. Result: `3`
+
+3. **`x03 = (-) 1 2`**
+   - The `-` operator as a function, subtracts `2` from `1`. Result: `-1`
+
+4. **`x04 = flip (-) 1 2`**
+   - `flip (-)` switches the argument order, so it's `2 - 1`. Result: `1`
+
+5. **`x05 = 1 : []`**
+   - The cons operator `(:)` adds `1` to an empty list. Result: `[1]`
+
+### List Operations
+
+6. **`x06 = head [1, 2]`**
+   - `head` returns the first element of a list. Result: `1`
+
+7. **`x07 = tail [1, 2]`**
+   - `tail` returns the list without its first element. Result: `[2]`
+
+### Boolean Operations and Conditionals
+
+8. **`x08 = 1 < 2`**
+   - A boolean comparison, `1` is less than `2`. Result: `True`
+
+9. **`x09 = if 1 < 2 then "yes" else "no"`**
+   - Conditional expression, since `1 < 2` is true, it returns `"yes"`. Result: `"yes"`
+
+### String and List Concatenation
+
+10. **`x10 = 'a' : "bc"`**
+    - The cons operator adds `'a'` to the string `"bc"`. Result: `"abc"`
+
+11. **`x11 = [1, 2] ++ [3, 4]`**
+    - Concatenation of two lists. Result: `[1, 2, 3, 4]`
+
+12. **`x12 = "ab" ++ "cd"`**
+    - Concatenation of two strings. Result: `"abcd"`
+
+### Folding (reduce-like operations) over Lists
+
+13. **`x13 = foldr (+) 0 [1, 2, 3]`**
+    - `foldr` reduces the list from the right with the `+` operator, starting with `0`. Result: `6` (1 + (2 + (3 + 0)))
+
+14. **`x14 = foldr (-) 0 [1, 2, 3]`**
+    - Similar to `x13`, but using `-`. Result: `2` (1 - (2 - (3 - 0)))
+
+15. **`x15 = foldl (+) 0 [1, 2, 3]`**
+    - `foldl` reduces the list from the left, starting with `0`. Result: `6` ((0 + 1) + 2 + 3)
+
+16. **`x16 = foldl (-) 0 [1, 2, 3]`**
+    - Left fold using `-`. Result: `-6` (((0 - 1) - 2) - 3)
+
+17. **`x17 = foldr (-) 7 [1, 2, 3]`**
+    - `foldr` with `-`, starting from `7`. Result: `-5` (1 - (2 - (3 - 7)))
+
+### Mapping and List Comprehensions
+
+18. **`x18 = map (2*) [1..10]`**
+    - `map` applies the function `2*` to each element of the list `[1..10]`. Result: `[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]`
+
+19. **`x19 = [2*x | x <- [1..10]]`**
+    - List comprehension version of `map`. Result: `[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]`
+
+### List Manipulations
+
+20. **`x20 = take 3 [6, 5, 4, 3, 2, 1]`**
+    - `take` extracts the first 3 elements from the list. Result: `[6, 5, 4]`
+
+21. **`x21 = take 2 (map (2*) [3, 4, 5])`**
+    - `map` multiplies each element by 2, and `take` extracts the first 2 results. Result: `[6, 8]`
+
+22. **`x22 = take 2 $ map (2*) [3, 4, 5]`**
+    - `$` eliminates the parentheses. This is the same as `x21`. Result: `[6, 8]`
+
+23. **`x23 = take 2 $ (2*) <$> [3, 4, 5]`**
+    - `<$>` is an infix synonym for `fmap`. This is also equivalent to `x21`. Result: `[6, 8]`
+
+### Folding Over Nested Lists
+
+24. **`x24 = foldr (++) [] [[1], [], [5, 7]]`**
+    - `foldr` concatenates all sublists. Result: `[1, 5, 7]`
+
+25. **`x25 = foldr (++) "" ["a", "", "bc"]`**
+    - Similar to `x24`, but concatenating strings. Result: `"abc"`
+
+### Max and Min Functions
+
+26. **`x26 = max 1 2`**
+    - Returns the maximum of two numbers. Result: `2`
+
+27. **`x27 = 1 `max` 2`**
+    - Infix version of `max`. Result: `2`
+
+28. **`x28 = maximum [1, 5, 3]`**
+    - Returns the maximum element in the list. Result: `5`
+
+### Advanced Folding
+
+29. **`x29 = flip (foldr (:)) "abc" "def"`**
+    - This is equivalent to `"def" ++ "abc"`. `flip` changes the argument order. Result: `"abcdef"`
+
+30. **`x30 = foldl (flip(:)) [] [2, 4, 6]`**
+    - `foldl` with `flip (:)` constructs the list in reverse. Result: `[6, 4, 2]`
+
+### List Comprehensions and Tuples
+
+31. **`x31 = sum [length s | s <- ["a", "b", "cd"]]`**
+    - Computes the sum of the lengths of strings. Result: `4`
+
+32. **`x32 = fst (1, "abc")`**
+    - `fst` returns the first element of a tuple. Result: `1`
+
+33. **`x33 = snd ([1, 2, 3], 'a')`**
+    - `snd` returns the second element of a tuple. Result: `'a'`
+
+34. **`x34 = curry fst 1 2`**
+    - `curry` transforms a function that takes a tuple into one that takes two arguments. `fst` returns the first argument. Result: `1`
+
+35. **`x35 = uncurry (+) (1, 2)`**
+    - `uncurry` transforms a function that takes two arguments into one that takes a tuple. `+` adds `1` and `2`. Result: `3`
+
+### Lambda Functions
+
+36. **`x36 = (\x -> 2*x) 5`**
+    - A lambda function that doubles `x`, applied to `5`. Result: `10`
+
+37. **`x37 = (\y -> y * y) 5`**
+    - A lambda function that squares `y`, applied to `5`. Result: `25`
+
+38. **`x38 = (\z -> 7) 5`**
+    - A lambda function that ignores the argument and always returns `7`. Result: `7`
+
+39. **`x39 = (\x -> (\x -> x+1) x) 5`**
+    - The inner lambda shadows the outer `x`, so it increments the inner `x`. Result: `6`
+
+### Higher-order Functions
+
+40. **`x40 = (\f -> f (f 0)) (\x -> x+1)`**
+    - Applies the function `(\x -> x + 1)` twice to `0`. Result: `2`
+
