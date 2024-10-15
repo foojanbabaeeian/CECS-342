@@ -27,6 +27,12 @@ python main.py > out.txt && diff out.txt ans.txt
 
 dotnet run > out.txt && diff out.txt ans.txt
 
+dotnet new console -o MyApp
+mv Program.cs MyApp/
+cd MyApp
+dotnet build
+
+
 gcc main.c && ./a.out > out.txt && diff out.txt ans.txt
 
 c++ main.cpp && ./a.out > out.txt && diff out.txt ans.txt
