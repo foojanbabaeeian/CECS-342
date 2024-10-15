@@ -1,4 +1,4 @@
-Assignment 2
+# Assignment 2
 In this assignment, you will use 5 different programming languages to solve the same problem:
 Use a generic sort function to sort values of different types. The values to sort could be integers, ﬂoating point numbers, strings, pairs of values (say a string and a number), or any other type of values that can be compared.
 Write a console application in each of these 5 languages: C, C++, C#, Python and Haskell.
@@ -19,3 +19,17 @@ sort people alphabetically (lexicographically) by name, and to
 sort people descending by age, where people of the same age should be sorted alphabetically (lexicographically).
 The point here is to reuse as much code as possible to perform all 3 different sort operations. Try to isolate the speciﬁc code that is needed for each of the three tasks.
 Write a main function in each of the 5 languages to test your code by writing the sort results to the console.
+
+
+#### Usage
+
+python main.py > out.txt && diff out.txt ans.txt
+
+dotnet run > out.txt && diff out.txt ans.txt
+
+gcc main.c && ./a.out > out.txt && diff out.txt ans.txt
+
+c++ main.cpp && ./a.out > out.txt && diff out.txt ans.txt
+
+ghc -o check check.hs > ./check
+
