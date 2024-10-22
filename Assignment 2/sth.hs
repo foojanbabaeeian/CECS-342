@@ -1,7 +1,6 @@
 import Data.List (sort, sortBy)
 import Data.Ord (comparing)
 
-
 numbers :: [Float]
 numbers = [645.41, 37.59, 76.41, 5.31, -34.23, 1.11, 1.10, 
            23.46, 635.47, -876.32, 467.83, 62.25]
