@@ -40,18 +40,19 @@ class Program
             {
                 Type = group.Key,
                 Count = group.Count(),
+                //  System.IO.FileInfo to get the size of a file with a given path
                 Size = group.Sum(file => new FileInfo(file).Length) // Total size of files in the group
             })
             .OrderByDescending(entry => entry.Size); // Sort by size in descending order
 
         // Create the HTML table
         var table = new XElement("table",
-            new XElement("tr", // Header row
+            new XElement("tr", 
                 new XElement("th", "Type"),
                 new XElement("th", "Count"),
                 new XElement("th", "Size")
             ),
-            report.Select(entry => new XElement("tr", // Data rows
+            report.Select(entry => new XElement("tr", 
                 new XElement("td", entry.Type),
                 new XElement("td", entry.Count),
                 new XElement("td", FormatByteSize(entry.Size))
