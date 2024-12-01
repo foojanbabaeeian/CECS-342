@@ -47,12 +47,12 @@ class Program
 
         // Create the HTML table
         var table = new XElement("table",
-            new XElement("tr", 
+            new XElement("tr",
                 new XElement("th", "Type"),
                 new XElement("th", "Count"),
                 new XElement("th", "Size")
             ),
-            report.Select(entry => new XElement("tr", 
+            report.Select(entry => new XElement("tr",
                 new XElement("td", entry.Type),
                 new XElement("td", entry.Count),
                 new XElement("td", FormatByteSize(entry.Size))
